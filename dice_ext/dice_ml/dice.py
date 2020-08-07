@@ -1,6 +1,6 @@
 """Module pointing to different implementations of DiCE based on different frameworks such as Tensorflow or PyTorch."""
 
-import tensorflow as tf
+# import tensorflow as tf
 
 
 class Dice:
