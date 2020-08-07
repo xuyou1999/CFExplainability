@@ -329,3 +329,28 @@ class ImplicitSequenceModel(object):
                         item_var)
 
         return cpu(out).detach().numpy().flatten()
+    
+    def get_params(self, deep=True):
+        return dict(
+            n_iter=self._n_iter, loss=self._loss, embedding_dim=self._embedding_dim, batch_size=self._batch_size, 
+            l2=self._l2, learning_rate=self._learning_rate, representation=self._representation
+        )
+    
+#     def set_params(self, loss, representation, embedding_dim, n_iter, batch_size, l2, learning_rate):
+#         self._loss = loss
+#         self._representation = representation
+#         self._embedding_dim = embedding_dim
+#         self._n_iter = n_iter
+#         self._batch_size = batch_size
+#         self._l2 = l2
+#         self._learning_rate = learning_rate
+    def set_params(self, **params):
+        """Sets the parameters of this estimator.
+                # Arguments
+                    **params: Dictionary of parameter names mapped to their values.
+                # Returns
+                    self
+        """
+        for parameter, value in params.items():
+            setattr(self, parameter, value)
+        return self
